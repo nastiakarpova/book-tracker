@@ -1,0 +1,62 @@
+{
+    "items" : [
+        {
+            "title": "Harry Potter and the Chamber of Secrets",
+            "authors": ["J.K. Rowling"],
+            "id": "5iTebBW-w7QC",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/5iTebBW-w7QC",
+            "publishedDate": "2015-12-08",
+            "imageLinks": {
+                "smallThumbnail": "http://books.google.com/books/content?id=5iTebBW-w7QC&printsec=frontcover&img=1&zoom=5&imgtk=AFLRE71xqB43Z1-vdxVYYbGZP1Zpn4O48eMQrBmmgyyRn9ioFI6HG8V0_48nQlGNah5fKop0QpvUg3mttrEWm7HhhuHkdDoIBpUKJsHfL4kquRNu8jzpxffG4MN3UVyn94t_nGgye48k&source=gbs_api",
+                "thumbnail": "http://books.google.com/books/content?id=5iTebBW-w7QC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE71VDfpOqrruvFszvu4ADoonNPN2fdF82iBFeR_1Ay-QSMv6HBJ6i1Gj1UsxostCj1yFCW9zj5x2eeKhr-DYPvYhqKLiSxoTvjO1ZjAz6U6t6SQ94rxvyIOLj-pQPEGbWSKAt8RF&source=gbs_api"
+              }
+        },
+        {
+            "title": "Ducks",
+            "subtitle":	"Two Years in the Oil Sands",
+            "authors": ["Kate Beaton"],
+            "id": "JYxVEAAAQBAJ",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/JYxVEAAAQBAJ",
+            "publishedDate": "2022-09-13",
+            "imageLinks": {
+                "smallThumbnail": "http://books.google.com/books/publisher/content?id=JYxVEAAAQBAJ&printsec=frontcover&img=1&zoom=5&imgtk=AFLRE72WUN7VYUh-Rf0b1jpJVFh1QxaoX6vJbmdU3Lo2J5mYUsbj9e8MOevcy-geP8tUjSKEI-5WtA__m3gt-m4WY1vHJNkpeJtNHRpD5ihETw73IKxviCMWdKgxuG2T-8NbAFndCcgQ&source=gbs_api",
+                "thumbnail": "http://books.google.com/books/publisher/content?id=JYxVEAAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72A6nQD1a6NbJhitBCQ6uskiv4huZCPQxvrAtns-k2CT6h2J08VRMm2WIF6oEEcx9mRRhWl8L3zdAi9SeVvdDoXGt5cKonp1ye1IQ-I4oQTBr2liW3IHzd_I955tLv15ajDI386&source=gbs_api"
+              }
+        },
+        {
+            "title": "Where the Crawdads Sing",
+            "subtitle": "Reese's Book Club (A Novel)",
+            "authors": ["Delia Owens"],
+            "id": "ey5lDwAAQBAJ",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/ey5lDwAAQBAJ",
+            "publishedDate": "2018-08-14",
+            "imageLinks": {
+                "smallThumbnail": "http://books.google.com/books/publisher/content?id=ey5lDwAAQBAJ&printsec=frontcover&img=1&zoom=5&imgtk=AFLRE71vCC5bcLXFWK8NgJEXyUwA9NA4m46YGfwwv45sFpJEHImVYDtUBR3psKR8oe7peU6X0T4x8KaTkUazN51o5AIoo8wLZE-Brcup5-4e92e18XCdSyMFLOASFRz1LxeosNOcX8gj&source=gbs_api",
+                "thumbnail": "http://books.google.com/books/publisher/content?id=ey5lDwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72RD2psoSEYJ1XYwAucUgqe81Y8bF_vOV6zh_ct8IYd9gJayVIkSDRaZ4lgLLNmqlOEPFRsRwfz0_R8auoY-ufcObGTu_KnHmIsJMkzj1aK-KnM3-oirxTCIMtWd5-8jYgR2JSQ&source=gbs_api"
+              }
+        },
+        {
+            "title": "Beautiful Boy",
+            "subtitle": "A Father's Journey Through His Son's Addiction",
+            "authors": ["David Sheff"],
+            "id": "F2BEDwAAQBAJ",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/F2BEDwAAQBAJ",
+            "publishedDate": "2018-01-11",
+            "imageLinks": {
+                "smallThumbnail": "http://books.google.com/books/publisher/content?id=F2BEDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE735T2vCVQn2egeTb05x2b1vqk35r3C8eDEO4NOIqiR5TGVIS4geyjUTqzsA0KTP33vZZwkwvT3xdOgKFSMIBJDL6-URtYFLocgVqN1xnxVy95M1z7TAbQvXawohuwrIyOaR9DVq&source=gbs_api",
+                "thumbnail": "http://books.google.com/books/publisher/content?id=F2BEDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE72pYsgGvqWTKqjp4NrAn_ZRN0EVSdTd5b77T9PLMWBZNYQCWDo1a0v2Wij_BwrAyGUpKOlN6LIuNYLgVKEpqaCYI1NL-Hd8xFNWMklAJqLdlvi7YHZ2L0p0n3PL38M3sPae4TKu&source=gbs_api"
+              }
+        },
+        {
+            "title": "Animal Farm",
+            "authors": ["George Orwell"],
+            "id": "zsF8xwh6N_MC",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/zsF8xwh6N_MC",
+            "publishedDate": "2011-10-11",
+            "imageLinks": {
+                "smallThumbnail": "http://books.google.com/books/content?id=zsF8xwh6N_MC&printsec=frontcover&img=1&zoom=5&imgtk=AFLRE72KwX62Gi54zTXO16Urv67CUU7Da3Fzx7KY2zMW48ecmGBJGZ04qKtqoqXpv5q0XQJPOM98BC0ISmaXT7OFo0V-AyrmUdVmKWWVgXw-6Kffby65C4q9Wema4h5eCDIll_NhZWZg&source=gbs_api",
+                "thumbnail": "http://books.google.com/books/content?id=zsF8xwh6N_MC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE702Xzjm52rOVuf2Z7P5eiS6f4-A7azrjDddaUBoq2ScwpOLBT2Af1zIMRrK2SczivhUKeSAl9PowYXQpwIM0-MuYACJIwxMM48PapfUWwDBJtLkBawtHgvKKYQ_E8y5sMbbscld&source=gbs_api"
+              }
+        }
+    ]
+}
