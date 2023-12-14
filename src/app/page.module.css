@@ -20,3 +20,35 @@
 .name {
   font-size: 24px;
 }
+
+.currentBookshelf,
+.futureBookshelf {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.currentBookshelf h1,
+.futureBookshelf h1 {
+  min-width: 100%;
+}
+
+.btn-add {
+  padding: 1rem;
+  width: 10%;
+  line-height: 1rem;
+  background-color: white;
+  shadow: none;
+  border: 1px solid grey;
+  border-radius: 1rem;
+  border-color: #8c8c8c;
+  font-size: 28px;
+}
+
+.btn-add:hover {
+  background-color: #d9dcdf;
+  border: none;
+}
+
+
