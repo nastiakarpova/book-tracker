@@ -2,37 +2,58 @@
 
 import Image from 'next/image'
 import styles from '../page.module.css'
+import { useState } from "react"
 
 export default function FutureBookshelf({books}) {
 
+    let listOfBooks = books.items;
+
+    const [availableBooks, setAvailableBooks] = useState(listOfBooks);
+    const [futureBooks, setFutureBooks] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
+
+    function handleClick() {
+        setIsOpen(!isOpen);
+    }
+
+    function handleSelectedBook(bookName) {
+        const selectedBook = availableBooks.filter(book => book.title === bookName)[0];
+        futureBooks.length === 0 ? setFutureBooks([selectedBook]) : setFutureBooks(oldbooks => [...oldbooks, selectedBook]);
+    }
+    
+
     return (
-        <div className={styles.futureBookshelf}>
+        <>
             <h1>Next I'll be reading</h1>
-            <div className={styles.book}>
-            <Image
-                src={books.items[1].imageLinks.thumbnail}
-                alt={books.items[1].title}
-                width={160}
-                height={240}
-            />
+            <div className={styles.futureBookshelf}>
+
+                {futureBooks && futureBooks.map(futureBook => (
+                    <div key={futureBook.id}>
+                        <Image
+                            src={futureBook.imageLinks && futureBook.imageLinks.thumbnail}
+                            alt={futureBook.title}
+                            width={160}
+                            height={240}
+                        />
+                    </div>
+                ))}
+
+                <button 
+                    className={styles["btn-add"]}
+                    onClick={handleClick}
+                >{isOpen ? "Close" : "Open"}</button>
+                {isOpen && (
+                    <ul>
+                        {availableBooks.map((item, index) => (
+                            <li 
+                                key={index}
+                                onClick={() => handleSelectedBook(item.title)}>
+                                    {item.title}
+                            </li>
+                        ))}
+                    </ul>
+                )}
             </div>
-            <div className={styles.book}>
-            <Image
-                src={books.items[2].imageLinks.thumbnail}
-                alt={books.items[2].title}
-                width={160}
-                height={240}
-            />
-            </div>
-            <div className={styles.book}>
-            <Image
-                src={books.items[3].imageLinks.thumbnail}
-                alt={books.items[3].title}
-                width={160}
-                height={240}
-            />
-            </div>
-            <button className={styles["btn-add"]}>+</button>
-      </div>
+        </>
     )
 }
