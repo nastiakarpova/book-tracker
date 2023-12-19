@@ -18,7 +18,16 @@ export default function FutureBookshelf({books}) {
 
     function handleSelectedBook(bookName) {
         const selectedBook = availableBooks.filter(book => book.title === bookName)[0];
-        futureBooks.length === 0 ? setFutureBooks([selectedBook]) : setFutureBooks(oldbooks => [...oldbooks, selectedBook]);
+
+        futureBooks.length === 0 ? setFutureBooks([selectedBook]) : setFutureBooks(oldBooks => [...oldBooks, selectedBook]);
+//check type of futureBooks
+        setAvailableBooks(oldBooks => oldBooks.filter(book => book.title !== bookName));
+    }
+
+    function handleDeletedBook(bookName) {
+        const selectedBook = futureBooks.filter(book => book.title === bookName)[0];
+        setFutureBooks(oldBooks => oldBooks.filter(book => book.title !== bookName));
+        setAvailableBooks(oldBooks => [...oldBooks, selectedBook]);
     }
     
 
@@ -35,6 +44,8 @@ export default function FutureBookshelf({books}) {
                             width={160}
                             height={240}
                         />
+                        <button 
+                            onClick={() => handleDeletedBook(futureBook.title)}>Delete</button>
                     </div>
                 ))}
 
@@ -44,11 +55,11 @@ export default function FutureBookshelf({books}) {
                 >{isOpen ? "Close" : "Open"}</button>
                 {isOpen && (
                     <ul>
-                        {availableBooks.map((item, index) => (
+                        {availableBooks.map((book, index) => (
                             <li 
                                 key={index}
-                                onClick={() => handleSelectedBook(item.title)}>
-                                    {item.title}
+                                onClick={() => handleSelectedBook(book.title)}>
+                                    {book.title}
                             </li>
                         ))}
                     </ul>
