@@ -2,15 +2,21 @@
 
 import Image from 'next/image'
 import styles from '../page.module.css'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function FutureBookshelf({books}) {
 
     let listOfBooks = books.items;
 
+    const storedBooks = JSON.parse(localStorage.getItem("books"));
+
     const [availableBooks, setAvailableBooks] = useState(listOfBooks);
-    const [futureBooks, setFutureBooks] = useState([]);
+    const [futureBooks, setFutureBooks] = useState(storedBooks ? storedBooks : []);
     const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+        localStorage.setItem("books", JSON.stringify(futureBooks));
+    },[futureBooks]);
 
     function handleClick() {
         setIsOpen(!isOpen);
@@ -19,7 +25,7 @@ export default function FutureBookshelf({books}) {
     function handleSelectedBook(bookName) {
         const selectedBook = availableBooks.filter(book => book.title === bookName)[0];
 
-        futureBooks.length === 0 ? setFutureBooks([selectedBook]) : setFutureBooks(oldBooks => [...oldBooks, selectedBook]);
+        typeof(futureBooks) === null ? setFutureBooks([selectedBook]) : setFutureBooks(oldBooks => [...oldBooks, selectedBook]);
 //check type of futureBooks
         setAvailableBooks(oldBooks => oldBooks.filter(book => book.title !== bookName));
     }
