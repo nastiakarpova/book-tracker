@@ -7,8 +7,11 @@ import { useEffect, useState } from "react"
 export default function FutureBookshelf({books}) {
 
     let listOfBooks = books.items;
+    let storedBooks;
 
-    const storedBooks = JSON.parse(localStorage.getItem("books"));
+    useEffect(() => {
+        storedBooks = JSON.parse(localStorage.getItem("books"));
+    }, [])
 
     const [availableBooks, setAvailableBooks] = useState(listOfBooks);
     const [futureBooks, setFutureBooks] = useState(storedBooks ? storedBooks : []);
