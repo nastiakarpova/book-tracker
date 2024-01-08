@@ -3,6 +3,7 @@ import styles from './page.module.css'
 import { promises as fs } from 'fs';
 import CurrentBookshelf from './Components/currentBookshelf';
 import FutureBookshelf from './Components/futureBookshelf';
+import SearchResults from './Components/searchResults';
 
 export default async function Home() {
 
@@ -27,6 +28,9 @@ export default async function Home() {
         books={listOfBooks}
       />
       <FutureBookshelf 
+        books={listOfBooks}
+      />
+      <SearchResults
         books={listOfBooks}
       />
 

@@ -15,15 +15,11 @@ export default function FutureBookshelf({books}) {
 
     const [availableBooks, setAvailableBooks] = useState(listOfBooks);
     const [futureBooks, setFutureBooks] = useState(storedBooks ? storedBooks : []);
-    const [isOpen, setIsOpen] = useState(false);
+    // const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
         localStorage.setItem("books", JSON.stringify(futureBooks));
     },[futureBooks]);
-
-    function handleClick() {
-        setIsOpen(!isOpen);
-    }
 
     function handleSelectedBook(bookName) {
         const selectedBook = availableBooks.filter(book => book.title === bookName)[0];
@@ -57,22 +53,6 @@ export default function FutureBookshelf({books}) {
                             onClick={() => handleDeletedBook(futureBook.title)}>Delete</button>
                     </div>
                 ))}
-
-                <button 
-                    className={styles["btn-add"]}
-                    onClick={handleClick}
-                >{isOpen ? "Close" : "Open"}</button>
-                {isOpen && (
-                    <ul>
-                        {availableBooks.map((book, index) => (
-                            <li 
-                                key={index}
-                                onClick={() => handleSelectedBook(book.title)}>
-                                    {book.title}
-                            </li>
-                        ))}
-                    </ul>
-                )}
             </div>
         </>
     )
