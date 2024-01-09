@@ -1,9 +1,7 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 import { promises as fs } from 'fs';
-import CurrentBookshelf from './Components/currentBookshelf';
-import FutureBookshelf from './Components/futureBookshelf';
-import SearchResults from './Components/searchResults';
+import Bookshelves from './Components/bookshelves';
 
 export default async function Home() {
 
@@ -24,19 +22,9 @@ export default async function Home() {
         <div className={styles.name}>ShelfSpace</div>
       </div>
 
-      <CurrentBookshelf 
+      <Bookshelves 
         books={listOfBooks}
       />
-      <FutureBookshelf 
-        books={listOfBooks}
-      />
-      <SearchResults
-        books={listOfBooks}
-      />
-
-      
-      
-    
 
     </main>
   )
