@@ -3,12 +3,9 @@
 import styles from '../page.module.css'
 import {useState} from "react"
 
-export default function SearchResults({books}) {
+export default function SearchResults({availableBooks, onAddFutureBook}) {
 
     const [isOpen, setIsOpen] = useState(false);
-
-    let listOfBooks = books.items;
-    const [availableBooks, setAvailableBooks] = useState(listOfBooks);
 
     function handleClick() {
         setIsOpen(!isOpen);
@@ -24,11 +21,15 @@ export default function SearchResults({books}) {
                     {isOpen && (
                         <ul>
                             {availableBooks.map((book, index) => (
-                                <li 
-                                    key={index}
-                                >
-                                    {book.title}
-                                </li>
+                                <>
+                                    <li 
+                                        key={index}
+                                    >
+                                        {book.title}
+                                    </li> 
+                                    <button>Add to "Reading"</button>
+                                    <button onClick={() => onAddFutureBook(book.title)}>Add to "To read"</button>
+                                </>
                             ))}
                         </ul>
                     )}
