@@ -9,13 +9,13 @@ import { useEffect, useState } from "react"
 export default function Bookshelves({books}) {
 
     let listOfBooks = books.items;
-    let storedBooks;
-    const [availableBooks, setAvailableBooks] = useState(listOfBooks);
-    const [futureBooks, setFutureBooks] = useState(storedBooks ? storedBooks : []);
 
-    useEffect(() => {
-        storedBooks = JSON.parse(localStorage.getItem("books"));
-    }, [])
+    const [availableBooks, setAvailableBooks] = useState(listOfBooks);
+    
+    const [futureBooks, setFutureBooks] = useState(() => {
+        const saved = localStorage.getItem("books");
+        return saved ? JSON.parse(saved) : [];
+    });
 
     useEffect(() => {
         localStorage.setItem("books", JSON.stringify(futureBooks));
