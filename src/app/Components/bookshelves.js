@@ -11,14 +11,25 @@ export default function Bookshelves({books}) {
     let listOfBooks = books.items;
 
     const [availableBooks, setAvailableBooks] = useState(listOfBooks);
-    
-    const [futureBooks, setFutureBooks] = useState(() => {
-        const saved = localStorage.getItem("books");
-        return saved ? JSON.parse(saved) : [];
-    });
+    const [futureBooks, setFutureBooks] = useState([]);
+    const [isDataLoaded, setIsDataLoaded] = useState(false);
 
     useEffect(() => {
-        localStorage.setItem("books", JSON.stringify(futureBooks));
+        if (typeof window !== "undefined") {
+            const saved = localStorage.getItem("books");
+            const savedBooks = saved ? JSON.parse(saved) : null;
+
+            if (savedBooks) {
+                setFutureBooks(savedBooks);
+                setIsDataLoaded(true);
+            }
+        }
+    }, [])
+
+    useEffect(() => {
+        if (futureBooks.length > 0) {
+            localStorage.setItem("books", JSON.stringify(futureBooks));
+        }
     },[futureBooks]);
 
     function handleSelectedBook(bookName) {
@@ -40,10 +51,14 @@ export default function Bookshelves({books}) {
             <CurrentBookshelf 
                 books={books}
             />
-            <FutureBookshelf 
-                futureBooks={futureBooks}
-                onDeleteBook={handleDeletedBook}
+            {isDataLoaded ? (
+                <FutureBookshelf 
+                    futureBooks={futureBooks}
+                    onDeleteBook={handleDeletedBook}
             />
+            ) : (
+                <div>Loading...</div>
+            )}
             <SearchResults
                 availableBooks={availableBooks}
                 onAddFutureBook={handleSelectedBook}
