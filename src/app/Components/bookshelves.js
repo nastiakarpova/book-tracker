@@ -31,6 +31,10 @@ export default function Bookshelves({books}) {
             if (savedBooks) {
                 setFutureBooks(savedBooks);
                 setIsDataLoaded(true);
+                setAvailableBooks(oldBooks => {
+                    const savedTitles = new Set(savedBooks.map(book => book.title));
+                    return oldBooks.filter(book => !savedTitles.has(book.title));
+                });
             }
         }
     }, [])
