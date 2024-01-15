@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import styles from '../page.module.css'
 
-export default function FutureBookshelf({futureBooks, onDeleteBook}) {
+export default function FutureBookshelf({futureBooks, confirmToDelete}) {
 
     return (
         <>
@@ -19,7 +19,7 @@ export default function FutureBookshelf({futureBooks, onDeleteBook}) {
                             height={240}
                         />
                         <button 
-                            onClick={() => onDeleteBook(futureBook.title)}>Delete</button>
+                            onClick={() => confirmToDelete(futureBook.title)}>Delete</button>
                     </div>
                 ))}
             </div>
