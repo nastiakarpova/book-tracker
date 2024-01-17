@@ -21,6 +21,14 @@ export default function Bookshelves({books}) {
         return savedBooks ? JSON.parse(savedBooks) : [];
     });
 
+    const [currentBooks, setCurrentBooks] = useState(() => {
+        if (typeof window === "undefined") {
+            return [];
+        }
+        const savedCurrentBooks = localStorage.getItem("currentBooks");
+        return savedCurrentBooks ? JSON.parse(savedCurrentBooks) : [];
+    })
+
     useEffect(() => {
         if (typeof window !== "undefined") {
             const saved = localStorage.getItem("books");
@@ -44,30 +52,44 @@ export default function Bookshelves({books}) {
             localStorage.setItem("books", JSON.stringify(futureBooks));
     },[futureBooks]);
 
-    function handleSelectedBook(bookName) {
+
+    function handleSelectedBook(bookName, shelf) {
         const selectedBook = availableBooks.filter(book => book.title === bookName)[0];
 
-        futureBooks.length === 0 ? setFutureBooks([selectedBook]) : setFutureBooks(oldBooks => [...oldBooks, selectedBook]);
+        if (shelf === "current") {
+            currentBooks.length === 0 ? setCurrentBooks([selectedBook]) : setCurrentBooks(oldBooks => [...oldBooks, selectedBook]);
+        setAvailableBooks(oldBooks => oldBooks.filter(book => book.title !== bookName));
+
+        } else if (shelf === "future") {
+            futureBooks.length === 0 ? setFutureBooks([selectedBook]) : setFutureBooks(oldBooks => [...oldBooks, selectedBook]);
 //check type of futureBooks
         setAvailableBooks(oldBooks => oldBooks.filter(book => book.title !== bookName));
+        }
+    } 
+
+    function handleDeletedBook(bookName, shelf) {
+        if (shelf === "current") {
+            const selectedBook = currentBooks.filter(book => book.title === bookName)[0];
+            setCurrentBooks(oldBooks => oldBooks.filter(book => book.title !== bookName));
+            setAvailableBooks(oldBooks => [...oldBooks, selectedBook]);
+        } else if (shelf === "future") {
+            const selectedBook = futureBooks.filter(book => book.title === bookName)[0];
+            setFutureBooks(oldBooks => oldBooks.filter(book => book.title !== bookName));
+            setAvailableBooks(oldBooks => [...oldBooks, selectedBook]);
+        }
     }
 
-    function handleDeletedBook(bookName) {
-        const selectedBook = futureBooks.filter(book => book.title === bookName)[0];
-        setFutureBooks(oldBooks => oldBooks.filter(book => book.title !== bookName));
-        setAvailableBooks(oldBooks => [...oldBooks, selectedBook]);
-    }
-
-    function confirmToDelete(bookName) {
+    function confirmToDelete(bookName, shelf) {
         if(window.confirm("Are you sure you want to delete this book?")) {
-            handleDeletedBook(bookName);
+            handleDeletedBook(bookName, shelf);
         }
     }
 
     return (
         <>
             <CurrentBookshelf 
-                books={books}
+                currentBooks={currentBooks}
+                confirmToDelete={confirmToDelete}
             />
             {isDataLoaded ? (
                 <FutureBookshelf 
@@ -79,7 +101,7 @@ export default function Bookshelves({books}) {
             )}
             <SearchResults
                 availableBooks={availableBooks}
-                onAddFutureBook={handleSelectedBook}
+                onAddBook={handleSelectedBook}
             />
       </>
     )

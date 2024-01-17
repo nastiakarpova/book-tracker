@@ -19,7 +19,7 @@ export default function FutureBookshelf({futureBooks, confirmToDelete}) {
                             height={240}
                         />
                         <button 
-                            onClick={() => confirmToDelete(futureBook.title)}>Delete</button>
+                            onClick={() => confirmToDelete(futureBook.title, "future")}>Delete</button>
                     </div>
                 ))}
             </div>

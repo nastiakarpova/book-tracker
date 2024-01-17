@@ -3,7 +3,7 @@
 import styles from '../page.module.css'
 import {useState} from "react"
 
-export default function SearchResults({availableBooks, onAddFutureBook}) {
+export default function SearchResults({availableBooks, onAddBook}) {
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -27,8 +27,8 @@ export default function SearchResults({availableBooks, onAddFutureBook}) {
                                     >
                                         {book.title}
                                     </li> 
-                                    <button>Add to "Reading"</button>
-                                    <button onClick={() => onAddFutureBook(book.title)}>Add to "To read"</button>
+                                    <button onClick={() => onAddBook(book.title, "current")}>Add to "Reading"</button>
+                                    <button onClick={() => onAddBook(book.title, "future")}>Add to "To read"</button>
                                 </>
                             ))}
                         </ul>
