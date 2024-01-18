@@ -11,13 +11,14 @@ export default function Bookshelves({books}) {
     let listOfBooks = books.items;
 
     const [availableBooks, setAvailableBooks] = useState(listOfBooks);
-    const [isDataLoaded, setIsDataLoaded] = useState(false);
+    const [isCurrentDataLoaded, setIsCurrentDataLoaded] = useState(false);
+    const [isFutureDataLoaded, setIsFutureDataLoaded] = useState(false);
 
     const [futureBooks, setFutureBooks] = useState(() => {
         if (typeof window === "undefined") {
             return [];
         }
-        const savedBooks = localStorage.getItem("books");
+        const savedBooks = localStorage.getItem("futureBooks");
         return savedBooks ? JSON.parse(savedBooks) : [];
     });
 
@@ -31,14 +32,14 @@ export default function Bookshelves({books}) {
 
     useEffect(() => {
         if (typeof window !== "undefined") {
-            const saved = localStorage.getItem("books");
+            const saved = localStorage.getItem("currentBooks");
             const savedBooks = saved ? JSON.parse(saved) : [];
             console.log("extracting from localStorage..")
             console.log(savedBooks);
 
             if (savedBooks) {
-                setFutureBooks(savedBooks);
-                setIsDataLoaded(true);
+                setCurrentBooks(savedBooks);
+                setIsCurrentDataLoaded(true);
                 setAvailableBooks(oldBooks => {
                     const savedTitles = new Set(savedBooks.map(book => book.title));
                     return oldBooks.filter(book => !savedTitles.has(book.title));
@@ -48,8 +49,31 @@ export default function Bookshelves({books}) {
     }, [])
 
     useEffect(() => {
-            console.log("Updating localStorage with: ", futureBooks);
-            localStorage.setItem("books", JSON.stringify(futureBooks));
+        if (typeof window !== "undefined") {
+            const saved = localStorage.getItem("futureBooks");
+            const savedBooks = saved ? JSON.parse(saved) : [];
+            console.log("extracting from localStorage..")
+            console.log(savedBooks);
+
+            if (savedBooks) {
+                setFutureBooks(savedBooks);
+                setIsFutureDataLoaded(true);
+                setAvailableBooks(oldBooks => {
+                    const savedTitles = new Set(savedBooks.map(book => book.title));
+                    return oldBooks.filter(book => !savedTitles.has(book.title));
+                });
+            }
+        }
+    }, [])
+
+    useEffect(() => {
+        console.log("Updating localStorage with current books: ", currentBooks);
+        localStorage.setItem("currentBooks", JSON.stringify(currentBooks));
+    },[currentBooks]);
+
+    useEffect(() => {
+            console.log("Updating localStorage with future books: ", futureBooks);
+            localStorage.setItem("futureBooks", JSON.stringify(futureBooks));
     },[futureBooks]);
 
 
@@ -87,11 +111,16 @@ export default function Bookshelves({books}) {
 
     return (
         <>
-            <CurrentBookshelf 
+            {isCurrentDataLoaded ? (
+                <CurrentBookshelf 
                 currentBooks={currentBooks}
                 confirmToDelete={confirmToDelete}
             />
-            {isDataLoaded ? (
+            ) : (
+                <div>Loading...</div>
+            )}
+            
+            {isFutureDataLoaded ? (
                 <FutureBookshelf 
                     futureBooks={futureBooks}
                     confirmToDelete={confirmToDelete}

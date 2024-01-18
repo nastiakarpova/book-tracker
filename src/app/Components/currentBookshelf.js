@@ -6,9 +6,9 @@ import styles from '../page.module.css'
 export default function CurrentBookshelf({currentBooks, confirmToDelete}) {
 
     return(
-        <div className={styles.currentBookshelf}>
+        <>
             <h1>Currently I'm reading</h1>
-            <div className={styles.book}>
+            <div className={styles.futureBookshelf}>
             
                 {currentBooks && currentBooks.map(currentBook => (
                         <div key={currentBook.id}>
@@ -23,6 +23,6 @@ export default function CurrentBookshelf({currentBooks, confirmToDelete}) {
                         </div>
                     ))}
             </div>
-      </div>
+      </>
     )
 }
