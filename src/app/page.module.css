@@ -62,7 +62,6 @@
   background: none;
   padding: 0.5rem;
   align-self: flex-end;
-  
 }
 
 .cards {
@@ -113,4 +112,30 @@
 .p-authors {
   color: #7B8895;
   font-size: 12px;
+}
+
+.btn-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  border-radius: 50%;
+  background-color: #615EEC;
+  border: none;
+  width: 68px;
+  height: 68px; 
+  font-size: 32px;
+  font-weight: 200;
+  color: #ffffff;
+  vertical-align: middle;
+  text-align: center; 
+  z-index: 1000;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.btn-fab:hover, .btn-fab:active {
+  background-color: #8280dd;
+  cursor: pointer;
+  transform: translateY(-1px);
 }
