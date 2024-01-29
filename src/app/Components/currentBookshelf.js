@@ -7,21 +7,42 @@ export default function CurrentBookshelf({currentBooks, confirmToDelete}) {
 
     return(
         <>
-            <h1>Currently I'm reading</h1>
-            <div className={styles.futureBookshelf}>
+                <div className={styles.currentBookshelf}>
             
                 {currentBooks && currentBooks.map(currentBook => (
-                        <div key={currentBook.id}>
-                            <Image
-                                src={currentBook.imageLinks && currentBook.imageLinks.thumbnail}
-                                alt={currentBook.title}
-                                width={160}
-                                height={240}
-                            />
-                            <button 
-                                onClick={() => confirmToDelete(currentBook.title, "current")}>Delete</button>
+                        <div key={currentBook.id} className={styles.cards}>
+                            <div className={styles.card}>
+                                
+                                <div>
+                                    <Image
+                                    src={currentBook.imageLinks && currentBook.imageLinks.thumbnail}
+                                    alt={currentBook.title}
+                                    width={102}
+                                    height={152}
+                                    className={styles["book-image"]}
+                                    />
+                                </div>
+                                
+                                <div className={styles["book-info"]}>
+                                    <div className={styles["book-title-authors"]}>
+                                        <p className={styles["p-title"]}>{currentBook.title}</p>
+                                        <p className={styles["p-authors"]}>{currentBook.authors}</p>
+                                    </div>
+                                    <button 
+                                        className={styles["btn-delete"]}
+                                        onClick={() => confirmToDelete(currentBook.title, "current")}>
+                                            Remove
+                                    </button>                                    
+                                </div>
+                                
+                            </div>
                         </div>
                     ))}
+                    <button 
+                        className={styles["btn-fab"]}
+                            onClick={() => console.log("clicked")}>
+                            +
+                    </button>
             </div>
       </>
     )

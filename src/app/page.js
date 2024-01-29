@@ -10,21 +10,30 @@ export default async function Home() {
 
   return (
     <main className={styles.main}>
-      
+
       <div className={styles.logo}>
         <Image 
           src='/books.png' 
           alt="ShelfSpace Logo"
-          className='{styles.vercelLogo}'
           width={50}
           height={50} 
         />
         <div className={styles.name}>ShelfSpace</div>
+        <div>
+            <Image
+              src="/user.png"
+              alt="Login"
+              width={32}
+              height={32}
+            />
+        </div>
       </div>
 
-      <Bookshelves 
-        books={listOfBooks}
-      />
+      <div className={styles.bookshelves}>
+        <Bookshelves 
+          books={listOfBooks}
+        />
+      </div>
 
     </main>
   )
