@@ -2,6 +2,7 @@ import Image from 'next/image'
 import styles from './page.module.css'
 import { promises as fs } from 'fs';
 import Bookshelves from './Components/bookshelves';
+import Search from './Components/search';
 
 export default async function Home() {
 
@@ -34,6 +35,8 @@ export default async function Home() {
           books={listOfBooks}
         />
       </div>
+
+      <Search />
 
     </main>
   )
